@@ -1,8 +1,12 @@
 
 post_install() {
-    apply "[include] path = \"$PEARL_PKGDIR/gitconfig\"" $HOME/.gitconfig
+    link git "$PEARL_PKGDIR/gitconfig"
+}
+
+post_update() {
+    post_install
 }
 
 pre_remove() {
-    unapply "[include] path = \"$PEARL_PKGDIR/gitconfig\"" $HOME/.gitconfig
+    unlink git "$PEARL_PKGDIR/gitconfig"
 }
